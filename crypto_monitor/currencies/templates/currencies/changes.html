@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Significant Currency Changes</title>
+</head>
+<body>
+    <h1>Significant Currency Changes</h1>
+    <table>
+        <tr>
+            <th>Symbol</th>
+            <th>Price Change (%)</th>
+            <th>Last Price</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for change in changes %}
+        <tr>
+            <td>{{ change.symbol }}</td>
+            <td>{{ change.price_change_percent }}</td>
+            <td>{{ change.last_price }}</td>
+            <td>{{ change.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
