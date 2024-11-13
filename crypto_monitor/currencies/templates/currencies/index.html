@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Monitor</title>
+</head>
+<body>
+    <h1>Crypto Monitor - Percentage Decrease</h1>
+    <ul id="data"></ul>
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/binance/');
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            const listItem = `<li>${data.symbol}: ${data.percentage_decrease}% decrease</li>`;
+            document.getElementById("data").insertAdjacentHTML('beforeend', listItem);
+        };
+    </script>
+</body>
+</html>

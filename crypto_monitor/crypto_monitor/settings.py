@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'currencies',
-    'django_celery_results',  # For storing Celery task results
+    'channels',
 
 ]
 
@@ -102,4 +102,13 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'monitor.tasks.check_price_changes',
         'schedule': timedelta(seconds=1),
     },
+}
+
+
+# Channels configuration
+ASGI_APPLICATION = 'crypto_monitor.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
